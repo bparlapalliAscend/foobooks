@@ -1,20 +1,9 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Routes File
-|--------------------------------------------------------------------------
-|
-| Here is where you will register all of the routes in an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
 
-Route::get('/', function () {
-  //    return view('welcome');
-   return 'Hello There - this is Laravel';
-});
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,5 +17,23 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+    //     
+	Route::get('/', function () {
+	  //    return view('welcome');
+  	 return 'Hello There - this is Laravel';
+	});
+
+	Route::get('/books', 'BookController@getIndex');	
+  	Route::get('/book/create', 'BookController@getCreate');		
+	Route::post('/book/create', 'BookController@postCreate');	
+   Route::get('/book/{id}', 'BookController@getShow');
+   
+     Route::get('/practice', function() {
+     	echo "app.env: ".config('app.env');
+     	echo "<br>";
+     	echo "app.url: ".config('app.url');
+
+     	return "";
+     });
+	
 });
