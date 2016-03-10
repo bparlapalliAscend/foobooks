@@ -29,11 +29,10 @@ Route::group(['middleware' => ['web']], function () {
    Route::get('/book/{id}', 'BookController@getShow');
    
      Route::get('/practice', function() {
-     	echo "app.env: ".config('app.env');
-     	echo "<br>";
-     	echo "app.url: ".config('app.url');
+     	$random = new Rych\Random\Random();
+      return $random->getRandomString(8);
 
-     	return "";
+     	return "Practice";
      });
 	
 });
